@@ -1,0 +1,15 @@
+<table class="table" style="margin-top: 10px;">
+    <tr>
+        <th>Name</th>
+        <th>active</th>
+        <th></th>
+    </tr>
+    <tr *ngFor='let Organization of OrganizationArr$' (click)="selectOrganization(Organization)" style="height: -20px;">
+        <td>
+            <p>{{Organization?.name}}</p>
+        </td>
+        <td>
+            <p>{{Organization?.active}}</p>
+        </td>
+    </tr>
+</table>
