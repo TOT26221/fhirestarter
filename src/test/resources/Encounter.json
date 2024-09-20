@@ -64,18 +64,14 @@
     {
       "reference": "Appointment/example"
     }
-  ],
-  "period": {
-    "start": "2013-03-08",
-    "end": "2013-03-12"
+  ],"period": {
+    "start": "2013-01-28T14:00:00Z",
+    "end": "2013-01-28T14:15:00Z"
   },
   "reasonReference": [
     {
       "reference": "Condition/example",
       "display": "Chemo complication"
     }
-  ],
-  "partOf": {
-    "reference": "Encounter/f203"
-  }
+  ]
 }
