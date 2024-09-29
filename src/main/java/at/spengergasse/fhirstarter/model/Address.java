@@ -12,7 +12,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="a_address")
+@Table(name="a_address_line")
 @SuperBuilder
 public class Address extends Element{
     public enum UseCode {home, work, temp, old, billing}

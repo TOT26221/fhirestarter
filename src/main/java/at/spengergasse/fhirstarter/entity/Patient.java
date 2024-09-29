@@ -1,6 +1,7 @@
 package at.spengergasse.fhirstarter.entity;
 
 import at.spengergasse.fhirstarter.model.*;
+import at.spengergasse.fhirstarter.validators.PatientValid;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -16,6 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
+@PatientValid
 @SuperBuilder
 public class Patient extends DomainResource {
 

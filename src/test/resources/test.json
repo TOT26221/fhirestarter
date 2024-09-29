@@ -1,0 +1,116 @@
+{
+  "text": {
+    "status": null,
+    "div": null
+  },
+  "identifier": [
+    {
+      "use": "official",
+      "type": {
+        "coding": [
+          {
+            "system": null,
+            "version": null,
+            "code": "SS",
+            "display": "Sozialversicherungsnummer",
+            "userSelected": null
+          }
+        ],
+        "text": null
+      },
+      "system": null,
+      "value": "0123012345",
+      "period": null,
+      "assigner": null
+    },
+    {
+      "use": "official",
+      "type": {
+        "coding": [
+          {
+            "system": null,
+            "version": null,
+            "code": "DL",
+            "display": "Führerscheinnummer",
+            "userSelected": null
+          }
+        ],
+        "text": null
+      },
+      "system": null,
+      "value": "01234567",
+      "period": null,
+      "assigner": null
+    }
+  ],
+  "active": false,
+  "name": [
+    {
+      "use": "official",
+      "text": "<div> Mag. DI Simon Pirker, Bakk.techn.</div>",
+      "family": "Pirker",
+      "given": [
+        "Simon"
+      ],
+      "prefix": [
+        "Mag.",
+        "DI"
+      ],
+      "suffix": [
+        "Bakk.techn."
+      ],
+      "period": {
+        "start": "2010-01-01T00:00:00",
+        "end": "2050-01-01T00:00:00"
+      }
+    }
+  ],
+  "telecom": [
+    {
+      "system": "email",
+      "value": "pirker@spengergasse.at",
+      "use": "work",
+      "rank": 1,
+      "period": {
+        "start": "2010-01-01T00:00:00",
+        "end": "2030-01-01T00:00:00"
+      }
+    },
+    {
+      "system": "phone",
+      "value": "01234256",
+      "use": "work",
+      "rank": 1,
+      "period": {
+        "start": "2010-01-01T00:00:00",
+        "end": "2030-01-01T00:00:00"
+      }
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1960-01-02",
+  "deceasedBoolean": null,
+  "deceasedDateTime": "1990-01-02T15:00:00",
+  "address": [
+    {
+      "use": "work",
+      "type": "postal",
+      "text": "<div>Address...</div>",
+      "line": [
+        "Simon Pirker",
+        "Spengergasse 20",
+        "1050 Vienna",
+        "Austria"
+      ],
+      "city": "Vienna",
+      "district": "Margareten",
+      "state": "Vienna",
+      "postalcode": "1050",
+      "country": "Austria",
+      "period": {
+        "start": "2010-01-01T00:00:00",
+        "end": "2050-01-01T00:00:00"
+      }
+    }
+  ]
+}

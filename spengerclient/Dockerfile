@@ -3,15 +3,12 @@ FROM node:lts AS build
 
 # Set working directory
 WORKDIR /build
-COPY package*.json ./
-
-RUN npm install # das selbe wie "npm install" nur schneller
 COPY . .
 
-ENTRYPOINT ["sh"]
 
-#RUN npm run build --prod
-#FROM nginx
-#COPY --from=build /build/dist/spengerclient/browser /usr/share/nginx/html
-#EXPOSE 80
+RUN npm ci&& npm run build
+FROM nginx
+COPY --from=build /build/dist/spengerclient/browser /usr/share/nginx/html
+COPY --from=build /build/nginx_config /etc/nginx/
+EXPOSE 80
 

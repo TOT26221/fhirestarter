@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 
 @RestController
-@RequestMapping(path = "/api/practitioner")
-@CrossOrigin("http://localhost:4200")
+@RequestMapping(path = "/api/practitioner/")
+@CrossOrigin
 public class PractitionerController {
 
     @Autowired

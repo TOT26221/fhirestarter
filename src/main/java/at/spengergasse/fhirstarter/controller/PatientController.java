@@ -2,16 +2,23 @@ package at.spengergasse.fhirstarter.controller;
 
 import at.spengergasse.fhirstarter.entity.Patient;
 import at.spengergasse.fhirstarter.repository.PatientRepository;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
 import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
-@RequestMapping(path = "/api/patient")
-@CrossOrigin("http://localhost:4200")
+@RequestMapping(path = "/api/patient/")
+@CrossOrigin
 public class PatientController {
     @Autowired
     private PatientRepository patientRepository;
@@ -64,5 +71,28 @@ public class PatientController {
             patientRepository.delete(patient);
             return ResponseEntity.ok().<Patient>build();
         }).orElse(ResponseEntity.notFound().build());
+    }
+    @ExceptionHandler(ConstraintViolationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public Map<String, String> onConstraintValidationException(
+            ConstraintViolationException e) {
+        Map<String, String> errors = new HashMap<>();
+        for (ConstraintViolation violation : e.getConstraintViolations()) {
+            errors.put(violation.getPropertyPath().toString(),
+                    violation.getMessage());
+        }
+        return errors;
+    }
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public Map<String, String> onMethodArgumentNotValidException(
+            MethodArgumentNotValidException e) {
+        Map<String, String> errors = new HashMap<>();
+        for (FieldError fieldError : e.getBindingResult().getFieldErrors()) {
+            errors.put(fieldError.getField() , fieldError.getDefaultMessage());
+        }
+        return errors;
     }
 }
