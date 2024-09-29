@@ -31,12 +31,20 @@ public class Encounter extends DomainResource {
     private StatusCode status;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "en_sh_id")
+    private List<StatusHistory> statusHistory = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "en_cc_id")
     private List<CodeableConcept> type = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "en_re_id")
     private Reference subject;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "en_ep_id")
+    private List<Reference> episodeOfCare = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "en_pa_id")
@@ -51,14 +59,14 @@ public class Encounter extends DomainResource {
     private Period period;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "en_re_id")
+    @JoinColumn(name = "en_rr_re_id")
     private List<Reference> reasonReference = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "en_di_id")
     private List<Diagnosis> diagnosis = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "en_partOf_re_id")
-    private List<Reference> partOf = new ArrayList<>();
+    private Reference partOf;
 }
