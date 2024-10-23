@@ -2,6 +2,11 @@ package at.spengergasse.fhirstarter.controller;
 
 import at.spengergasse.fhirstarter.entity.Patient;
 import at.spengergasse.fhirstarter.repository.PatientRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +33,15 @@ public class PatientController {
 // This returns a JSON or XML with the users
         return patientRepository.findAll();
     }
+    @Operation(summary = "Get a book by its id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the patient",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Patient.class)) }),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied",
+                    content = @Content),
+            @ApiResponse(responseCode = "404", description = "patient not found",
+                    content = @Content) })
     @GetMapping("/{id}") //http://localhost:8080/api/patient/123
     public ResponseEntity<Patient> getPatient(@PathVariable String id) {
         return patientRepository
@@ -35,6 +49,13 @@ public class PatientController {
                 .map(patient -> ResponseEntity.ok().body(patient))
                 .orElse(ResponseEntity.notFound().build());
     }
+    @Operation(summary = "Create a new patient")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Patient created",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Patient.class)) }),
+            @ApiResponse(responseCode = "400", description = "Invalid patient",
+                    content = @Content) })
     @PostMapping()
     public ResponseEntity<Patient> createPatient(@Valid @RequestBody
                                                  Patient patient) {
