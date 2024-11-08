@@ -28,7 +28,7 @@ public class StatusHistory extends BackboneElement{
     private StatusCode status;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "sh_period_id", nullable = false)
+    @JoinColumn(name = "sh_period_id", nullable = false, referencedColumnName = "id")
     @NotNull
     private Period period;
 }

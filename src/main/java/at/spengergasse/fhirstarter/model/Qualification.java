@@ -2,7 +2,6 @@ package at.spengergasse.fhirstarter.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-@SuperBuilder
+@Builder
 public class Qualification extends BackboneElement{
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "i_q_id", referencedColumnName = "id")

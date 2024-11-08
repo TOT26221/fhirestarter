@@ -2,7 +2,6 @@ package at.spengergasse.fhirstarter.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 
 
 @Getter
@@ -10,7 +9,7 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@SuperBuilder
+@Builder
 @Table(name = "re_reference")
 public class Reference extends Element {
 

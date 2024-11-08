@@ -1,13 +1,18 @@
-
 services:
-    web:
-        environment:
-                spring_profiles_active: docker
-        build: .
-        ports:
-          - 8080:8080
-    db:
-      image: mysql
-      environment:
-        MYSQL_ROOT_PASSWORD: 123456
-        MYSQL_DATABASE: fhir
+  spring:
+    restart: always
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+  db:
+    image: mysql
+    volumes:
+      - mysqlvolume:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=fhirstarter
+
+volumes:
+  mysqlvolume:

@@ -1,8 +1,8 @@
 INSERT INTO na_narrative (id, na_div, na_status) VALUES ('98f', '<div xmlns=\\\"http://www.w3.org/1999/xhtml\\\"><p><b>Generated Narrative</b></p><div style=\\\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\\\"><p style=\\\"margin-bottom: 0px\\\">Resource &quot;f005&quot; </p></div><p><b>identifier</b>: id: 118265112 (OFFICIAL), id: 191REW8WE916 (USUAL)</p><p><b>name</b>: Langeveld Anne (OFFICIAL)</p><p><b>telecom</b>: ph: 0205563847(WORK), <a href=\\\"mailto:a.langeveld@bmc.nl\\\">a.langeveld@bmc.nl</a>, fax: 0205668916(WORK)</p><p><b>address</b>: Galapagosweg 9 Amsterdam 1105 AZ NLD (WORK)</p><p><b>gender</b>: female</p><p><b>birthDate</b>: 1959-03-11</p><p><b>communication</b>: France <span style=\\\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\\\"> (<a href=\\\"http://terminology.hl7.org/3.1.0/CodeSystem-v3-ietf3066.html\\\">Tags for the Identification of Languages</a>#fr)</span></p></div>', 'generated');
 INSERT INTO pr_practitioner (id, pr_active, pr_gender, pr_birthdate, dr_narrative_id) VALUES ('f005', true, 'female', '1959-03-11', '98f');
 
-INSERT INTO i_identifier (i_pr_id, id, i_system, id_use, i_value) VALUES ('f005', 'er54', 'urn:oid:2.16.528.1.1007.3', 'official', '118265112');
-INSERT INTO i_identifier (i_pr_id, id, i_system, id_use, i_value) VALUES ('f005', 'er36', 'urn:oid:2.16.840.1.113883.2.4.6.3', 'usual', '191REW8WE916');
+INSERT INTO i_identifier (i_pr_id, id, i_system, i_use, i_value) VALUES ('f005', 'er54', 'urn:oid:2.16.528.1.1007.3', 'official', '118265112');
+INSERT INTO i_identifier (i_pr_id, id, i_system, i_use, i_value) VALUES ('f005', 'er36', 'urn:oid:2.16.840.1.113883.2.4.6.3', 'usual', '191REW8WE916');
 
 INSERT INTO hn_humanname (hn_family, hn_pr_id, hn_use, id) VALUES ('Anna', 'f005', 'official', '23e');
 INSERT INTO given_humanname (id, given) VALUES ('23e', 'Langeveld');
@@ -21,8 +21,8 @@ INSERT INTO pe_period (pe_start, id) VALUES ('2014-07-09 06:00:00','pe2');
 INSERT INTO q_qualification (id, q_pr_id ,q_p_id ) VALUES ('qu1', 'f005', 'pe1');
 INSERT INTO q_qualification (id, q_pr_id ,q_p_id ) VALUES ('qu2', 'f005', 'pe2');
 
-INSERT INTO c_codableconcept (id, cc_text) VALUES ('3PCC', 'MD');
-INSERT INTO c_codableconcept (id, cc_text) VALUES ('PR2', 'PhD');
+INSERT INTO cc_codeableconcept (id, cc_text) VALUES ('3PCC', 'MD');
+INSERT INTO cc_codeableconcept (id, cc_text) VALUES ('PR2', 'PhD');
 
 INSERT INTO co_coding (id, co_system, co_code, co_display) VALUES ('co1', 'urn:ietf:bcp:47', 'fr', 'France');
 INSERT INTO co_coding (co_user_selected, co_cc_id, co_code, co_display, co_system, id) VALUES (true, '3PCC', '677091', 'MD', 'https://fhir.cerner.com/ec2458f2-1e24-41c8-b71b-0e701af7583d/codeSet/29600', 'co2');
@@ -41,14 +41,14 @@ INSERT INTO `fhirstarter`.`re_reference` (`id`, `re_ref`) VALUES ('rfpt1', 'Prac
 
 INSERT INTO `fhirstarter`.`pa_participant` (`en_pa_id`, `id`, `pa_re_id`) VALUES ('f201', 'pt1', 'rfpt1');
 INSERT INTO `fhirstarter`.`re_reference` (`en_app_re_id`, `id`, `re_ref`) VALUES ('f201', 'rfen2', 'Appointment/example');
-INSERT INTO `fhirstarter`.`c_codableconcept` (`en_cc_id`, `id`) VALUES ('f201', '2cc');
+INSERT INTO `fhirstarter`.`cc_codeableconcept` (`en_cc_id`, `id`) VALUES ('f201', '2cc');
 INSERT INTO `fhirstarter`.`co_coding` (`co_cc_id`, `co_code`, `co_display`, `co_system`, `id`) VALUES ('2cc', '11429006', 'Consultation', 'http://snomed.info/sct', '3co');-- diagnosisn 1
-INSERT INTO `fhirstarter`.`c_codableconcept` (`id`) VALUES ( '3cc');
+INSERT INTO `fhirstarter`.`cc_codeableconcept` (`id`) VALUES ( '3cc');
 
 INSERT INTO `fhirstarter`.`co_coding` (`co_cc_id`, `co_code`, `co_display`, `co_system`, `id`) VALUES ('3cc', 'AD', 'Admission diagnosis', 'http://terminology.hl7.org/CodeSystem/diagnosis-role', '4co');
 INSERT INTO `fhirstarter`.`re_reference` (`id`, `re_display`) VALUES ('rfdi1', 'Complications from Roels TPF chemotherapy on January 28th, 2013' );
 INSERT INTO `fhirstarter`.`di_diagnosis` (`di_rank`, `di_cc_system`, `di_re_display`, `en_di_id`, `id`) VALUES ('2', '3cc', 'rfdi1', 'f201', 'di1');-- diagnosis 2
-INSERT INTO `fhirstarter`.`c_codableconcept` (`id`) VALUES ( '4cc');
+INSERT INTO `fhirstarter`.`cc_codeableconcept` (`id`) VALUES ( '4cc');
 
 INSERT INTO `fhirstarter`.`co_coding` (`co_cc_id`, `co_code`, `co_display`, `co_system`, `id`) VALUES ('4cc', 'CC', 'Chief complaint', 'http://terminology.hl7.org/CodeSystem/diagnosis-role', '5co');
 INSERT INTO `fhirstarter`.`re_reference` (`id`, `re_display`) VALUES ('rfdi2', 'The patient is treated for a tumor');
@@ -73,3 +73,36 @@ INSERT INTO `fhirstarter`.`na_narrative` (id, na_div, na_status) VALUES (
                                                                             '</div>',
                                                                             'generated'
                                                                         );
+
+-- Insert into the medication table
+-- Insert into me_medication table
+INSERT INTO me_medication (id, me_status)
+VALUES ('med0336', 'active');
+
+-- Insert into cc_codeableconcept and co_coding tables for form
+INSERT INTO cc_codeableconcept (cc_text, id) VALUES ('Injection Solution (qualifier value)', 'form_cc_id');
+INSERT INTO co_coding (co_code, co_display, co_system, id) VALUES ('385219001', 'Injection Solution (qualifier value)', 'http://snomed.info/sct', 'form_co_id');
+
+-- Insert into cc_codeableconcept and co_coding tables for ingredient 1
+INSERT INTO cc_codeableconcept (cc_text, id) VALUES (NULL, 'ingredient1_cc_id');
+INSERT INTO co_coding (co_code, co_display, co_system, id) VALUES ('1114879', 'Dopamine', 'http://www.nlm.nih.gov/research/umls/rxnorm', 'ingredient1_co_id');
+
+-- Insert into ra_ratio table for ingredient 1 strength
+INSERT INTO ra_ratio (ra_nu_id, ra_de_id, id) VALUES ('numerator1_id', 'denominator1_id', 'ratio1_id');
+INSERT INTO qua_quantity (qua_value, qua_system, qua_code, id) VALUES (400, 'http://unitsofmeasure.org', 'mg', 'numerator1_id');
+INSERT INTO qua_quantity (qua_value, qua_system, qua_code, id) VALUES (500, 'http://unitsofmeasure.org', 'mL', 'denominator1_id');
+
+-- Insert into cc_codeableconcept and co_coding tables for ingredient 2
+INSERT INTO cc_codeableconcept (cc_text, id) VALUES (NULL, 'ingredient2_cc_id');
+INSERT INTO co_coding (co_code, co_display, co_system, id) VALUES ('0264751010', 'Dextrose 5% injection USP', 'http://hl7.org/fhir/sid/ndc', 'ingredient2_co_id');
+
+-- Insert into ra_ratio table for ingredient 2 strength
+INSERT INTO ra_ratio (ra_nu_id, ra_de_id, id) VALUES ('numerator2_id', 'denominator2_id', 'ratio2_id');
+INSERT INTO qua_quantity (qua_value, qua_system, qua_code, id) VALUES (5, 'http://unitsofmeasure.org', 'g', 'numerator2_id');
+INSERT INTO qua_quantity (qua_value, qua_system, qua_code, id) VALUES (100, 'http://unitsofmeasure.org', 'mL', 'denominator2_id');
+
+-- Insert into ba_batch table
+INSERT INTO ba_batch (ba_lot_number, ba_expiration_date, id) VALUES ('AT 9035 ZU69', '2030-11-30T06:00:00.000Z', 'batch_id');
+
+-- Link the batch to the medication
+UPDATE me_medication SET me_ba_id = 'batch_id' WHERE id = 'med0336';

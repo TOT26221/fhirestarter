@@ -2,7 +2,6 @@ package at.spengergasse.fhirstarter.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 
 @Entity
 @Table(name="g_greeting")
@@ -10,7 +9,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @Getter
 @Setter
-@SuperBuilder
+@Builder
 public class Greeting {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

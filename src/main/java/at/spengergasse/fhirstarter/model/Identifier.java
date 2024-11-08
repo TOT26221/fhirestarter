@@ -2,7 +2,6 @@ package at.spengergasse.fhirstarter.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 
 
 @Entity
@@ -11,12 +10,12 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @Getter
 @Setter
-@SuperBuilder
+@Builder
 public class Identifier extends Element{
     public enum IdentifierUseCode {usual, official, temp, secondary, old}
 
     @Enumerated(EnumType.STRING)
-    @Column(name="id_use")
+    @Column(name="i_use")
     private IdentifierUseCode use;
 
     @OneToOne(cascade = CascadeType.ALL)

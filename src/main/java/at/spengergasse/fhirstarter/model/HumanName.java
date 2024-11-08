@@ -2,7 +2,6 @@ package at.spengergasse.fhirstarter.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-@SuperBuilder
+@Builder
 public class HumanName extends Element{
     public enum UseCode{
         usual , official , temp , nickname , anonymous , old , maiden

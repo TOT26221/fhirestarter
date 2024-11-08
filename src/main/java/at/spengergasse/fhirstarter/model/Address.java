@@ -1,8 +1,7 @@
 package at.spengergasse.fhirstarter.model;
 
-import lombok.*;
 import jakarta.persistence.*;
-import lombok.experimental.SuperBuilder;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +11,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="a_address_line")
-@SuperBuilder
+@Table(name="a_address")
+@Builder
 public class Address extends Element{
     public enum UseCode {home, work, temp, old, billing}
     public enum TypeCode {postal, physical, both}

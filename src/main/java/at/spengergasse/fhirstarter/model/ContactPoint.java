@@ -1,8 +1,8 @@
 package at.spengergasse.fhirstarter.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 
 @Entity
 @NoArgsConstructor
@@ -10,7 +10,7 @@ import lombok.experimental.SuperBuilder;
 @Getter
 @Setter
 @Table(name="cp_contactpoint")
-@SuperBuilder
+@Builder
 public class ContactPoint extends Element {
 
     public enum SystemCode {
@@ -44,6 +44,7 @@ public class ContactPoint extends Element {
     @Column(name="cp_use")
     private UseCode use;
 
+    @Min(1)
     @Column(name="cp_rank")
     private Integer rank;
 

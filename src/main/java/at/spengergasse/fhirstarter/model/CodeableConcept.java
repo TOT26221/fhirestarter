@@ -2,23 +2,21 @@ package at.spengergasse.fhirstarter.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="c_codableconcept")
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@SuperBuilder
-public class CodeableConcept extends Element{
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="co_cc_id")
-    private List<Coding> coding = new ArrayList<Coding>();
+@Builder
+@Table(name ="cc_codeableconcept")
+public class CodeableConcept extends Element {
+    @OneToMany
+    @JoinColumn(name="cc_co_fk")
+    private List<Coding> coding = new ArrayList<>();
 
     @Column(name="cc_text")
     private String text;

@@ -5,7 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 import java.util.Base64;
@@ -16,7 +15,7 @@ import java.util.Base64;
 @AllArgsConstructor
 @Getter
 @Setter
-@SuperBuilder
+@Builder
 public class Attachment extends Element{
 
     @Column(name = "at_contentType")
