@@ -1,0 +1,35 @@
+<div class="container mt-4">
+    <h4 class="font-weight-bold">Medication Liste</h4>
+    <table class="table table-hover table-striped mt-4">
+        <thead class="thead-light">
+            <tr>
+                <th>Medication ID</th>
+                <th>Status</th>
+                <th>Aktion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let medication of medicationArr$" (click)="selectMedication(medication)">
+                <td>{{medication.id}}</td>
+                <td>{{medication?.text}}</td>
+                <td *ngFor="let code of medication.ingredient">
+                    <option *ngFor="let co of code.itemCodeableConcept?.coding">{{co.code}}</option>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-end mt-4">
+        <button (click)="createMedication()" type="button" class="btn btn-success">
+            <i class="fas fa-plus"></i> Neuen Medication erstellen
+        </button>
+    </div>
+
+    <!-- Wird nur angezeigt, wenn ein selectedMedication existiert und eine id hat -->
+    <div *ngIf="selectedMedication?.id != ''" class="selected-medication-details mt-4">
+        <h5 class="font-weight-bold">Ausgewählte Medication: {{selectedMedication?.id}}</h5>
+        <!-- Das Medication-Komponenten-Tag, welches das ausgewählte Medication anzeigt -->
+        <app-medication [id]="selectedMedication.id" (medicationModified)="onMedicationModified($event)">
+        </app-medication>
+    </div>
+</div>

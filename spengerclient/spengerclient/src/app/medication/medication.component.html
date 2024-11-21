@@ -1,0 +1,42 @@
+<div class="container mt-4">
+    <h4 class="font-weight-bold">Medication Details</h4>
+    <form (ngSubmit)="onSubmit()">
+        <table class="table table-hover table-striped mt-4">
+            <thead class="thead-light">
+                <tr>
+                    <th>Detail</th>
+                    <th>Wert</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Lot Nummer</td>
+                    <td>
+                        <option [value]="medication.batch?.lotNumber" name="lotNumber"></option>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Ablaufdatum</td>
+                    <td>
+                        <option [value]="medication.batch?.expirationDate" name="expirationDate"></option>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td>
+                        <input class="form-control" type="date" [(ngModel)]="medication.status" name="status">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-end mt-4">
+            <button (click)="deleteMedication()" type="button" class="btn btn-danger mr-2">
+                <i class="fas fa-trash-alt"></i> Medication löschen
+            </button>
+            <button type="button" class="btn btn-warning" style="margin-left: 10px;" (click)="updateEnconter()">
+                <i class="fas fa-save"></i> Änderungen speichern
+            </button>
+        </div>
+    </form>
+</div>

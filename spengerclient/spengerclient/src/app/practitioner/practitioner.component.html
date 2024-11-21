@@ -1,0 +1,93 @@
+<ul class="list-group">
+    <li class="list-group-item">ID: {{ practitioner?.id }}</li>
+    <li class="list-group-item">
+        <label> Active: <input [(ngModel)]="practitioner.active" type="checkbox">
+        </label>
+    </li>
+    <li class="list-group-item">
+        <label> Gender: <select [(ngModel)]="practitioner.gender">
+                <option *ngFor="let gender of practitionerGender" value="{{gender}}">
+                    {{gender}}
+                </option>
+            </select> </label>
+    </li>
+    <li class="list-group-item">
+        <label> Birth date: <input [(ngModel)]="practitioner.birthDate" type="date">
+        </label>
+    </li>
+    <li class="list-group-item">
+        <label> Address: <input [(ngModel)]="practitioner.address" type="text">
+        </label>
+    </li>
+    <li class="list-group-item">
+        <div>
+            <h3>Names</h3>
+            <button (click)="addName()" type="button" class="btn btn-success">
+                Namen hinzufügen
+            </button>
+            <div *ngFor="let name of practitioner?.name" style="margin-top: 10px;">
+                <div>
+                    <label> Use:
+                        <select [(ngModel)]="name.use">
+                            <option *ngFor="let useCode of humanNameUse" value="{{useCode}}">
+                                {{useCode}}
+                            </option>
+                        </select>
+                    </label>
+                    <br>
+                    <label> Text: <input [(ngModel)]="name.text" type="text" style="margin-top: 10px; margin-bottom: 10px;"/></label>
+                    <br>
+                    <label> Name: <input [(ngModel)]="name.family" type="text" /></label>
+                    <button (click)="deleteName(name)" type="button" class="btn btn-danger" style="margin-left: 10px;">
+                        Namen löschen
+                    </button>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div>
+            <h3>Photo:</h3>
+            <div *ngFor="let photo of practitioner?.photo">
+                <div>
+                    <div>
+                        <img src="{{photo?.data}}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div>
+            <h3>Qualifications</h3>
+            <button (click)="addQualification()" type="button" class="btn btn-success">
+                Qualification hinzufügen
+            </button>
+            <div *ngFor="let qualis of practitioner?.qualification">
+                <div>
+                    <label style="margin-top : 10px; margin-bottom: 10px;"> Code: <input [(ngModel)]="qualis.code"
+                            type="text" /></label>
+                    <br>
+                    <label> Id: <input [(ngModel)]="qualis.id" type="text" /></label>
+                    <br>
+                    <label> Period: <input [ngModel]="qualis?.period?.start" type="datetime-local" style="margin-top : 10px; margin-bottom: 10px;"/></label>
+                    <br>
+                    <label> Issuer: <input [(ngModel)]="qualis.issuer" type="text" /></label>
+                    <br>
+                    <button (click)="deleteQualification(qualis)" type="button" class="btn btn-danger" style="margin-top : 10px;
+                    margin-bottom: 10px;">
+                        Qualification löschen
+                    </button>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+<div style="margin-top: 10px; margin-bottom: 10px;">
+    <button (click)="deletePractitioner()" type="button" class="btn btn-danger">
+        Practitioner löschen
+    </button>
+    <button (click)="updatePractitioner()" type="button" class="btn btn-warning" style="margin-left: 10px;">
+        Änderungen speichern
+    </button>
+</div>
